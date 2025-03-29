@@ -1,0 +1,34 @@
+name: Recreate Mirror Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "yes" to confirm branch recreation'
+        required: true
+        default: "no"
+
+permissions:
+  contents: write
+
+jobs:
+  recreate-mirror-branch:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.confirm == 'yes' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git User
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Delete and Recreate Mirror Branch
+        run: |
+          git push origin --delete mirror
+          git checkout main
+          git checkout -b mirror
+          git push origin mirror
