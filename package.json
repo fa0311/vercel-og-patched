@@ -1,5 +1,5 @@
 {
-  "name": "@vercel/og",
+  "name": "vercel-og-win-patched",
   "version": "0.6.5",
   "description": "Generate Open Graph Images dynamically from HTML/CSS without a browser",
   "type": "module",
