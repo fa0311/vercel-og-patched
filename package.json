@@ -59,7 +59,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@resvg/resvg-wasm": "2.4.0",
-    "satori": "0.12.1",
+    "satori": "0.33.5",
     "yoga-wasm-web": "0.3.3"
   },
   "devDependencies": {
